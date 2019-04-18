@@ -20,11 +20,11 @@ namespace SeleniumDemo
         [TestMethod]
         public void SearchForCheese()
         {
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments ("headless");
+            //var chromeOptions = new ChromeOptions();
+            //chromeOptions.AddArguments ("headless");
 
             var ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var driver = new ChromeDriver(ChromeDriverPath, chromeOptions);
+            var driver = new ChromeDriver(ChromeDriverPath);//, chromeOptions);
             driver.Url = "https://www.google.com";
 
             driver.Manage().Window.Maximize();
