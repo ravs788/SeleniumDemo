@@ -13,7 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
+- task: AppCenterTest@1
+  inputs:
 steps:
 - task: NuGetToolInstaller@0
 
