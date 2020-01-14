@@ -16,7 +16,7 @@ using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 namespace SeleniumDemo
 {
     [TestClass]
-    public class UseMercuryTours
+    public class CoreAutomationMethods
     {
         [TestMethod]
         public void LogintoWebsite()
