@@ -50,7 +50,7 @@ namespace SeleniumDemo
             wait.Until(ExpectedConditions.ElementExists(By.XPath("//ul[@class='ab-top-secondary ab-top-menu']/li//span[text()='"+userName+"']")));
 
             Actions action = new Actions(driver);
-            action.MoveToElement(driver.FindElement(By.XPath("//ul[@class='ab-top-secondary ab-top-menu']/li/a")));
+            action.MoveToElement(driver.FindElement(By.XPath("//ul[@class='ab-top-secondary ab-top-menu']/li/a"))).Perform();
 
             IWebElement lnkLogOut = driver.FindElement(By.XPath("//ul[@class='ab-submenu']/li[@id='wp-admin-bar-logout']/a[text()='Log Out']"));
             lnkLogOut.Click();
