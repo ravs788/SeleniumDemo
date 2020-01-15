@@ -18,17 +18,24 @@ namespace SeleniumDemo
     [TestClass]
     public class CoreAutomationMethods
     {
+        IWebDriver driver;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            //var chromeOptions = new ChromeOptions();
+            //chromeOptions.AddArguments("headless");
+
+            var ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            driver = new ChromeDriver(ChromeDriverPath);//, chromeOptions);
+            driver.Url = "https://s1.demo.opensourcecms.com/wordpress/";
+
+            driver.Manage().Window.Maximize();            
+        }
+
         [TestMethod]
         public void LogintoWebsite()
         {
-            //var chromeOptions = new ChromeOptions();
-            //chromeOptions.AddArguments ("headless");
-
-            var ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var driver = new ChromeDriver(ChromeDriverPath);//, chromeOptions);
-            driver.Url = "https://s1.demo.opensourcecms.com/wordpress/";
-
-            driver.Manage().Window.Maximize();
 
             var userName = "opensourcecms";
 
@@ -52,6 +59,12 @@ namespace SeleniumDemo
             Actions action = new Actions(driver);
             action.MoveToElement(driver.FindElement(By.XPath("//ul[@class='ab-top-secondary ab-top-menu']/li/a"))).Perform();
 
+            
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
             IWebElement lnkLogOut = driver.FindElement(By.XPath("//ul[@class='ab-submenu']/li[@id='wp-admin-bar-logout']/a[text()='Log Out']"));
             lnkLogOut.Click();
 
