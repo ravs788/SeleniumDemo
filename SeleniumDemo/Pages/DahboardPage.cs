@@ -2,13 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SeleniumDemo.Framework;
 
 namespace SeleniumDemo.Pages
 {
@@ -24,11 +19,10 @@ namespace SeleniumDemo.Pages
 
         public void CreateBlog()
         {
-            
-            Actions action = new Actions(_driver);
-            action.MoveToElement(elePostNew).Perform();
 
-            lnkAddNew.Click();
+            elePostNew.MoveToElement(_driver);
+
+            lnkAddNew.ClickElement();
 
             Assert.IsTrue(lnkPosts.Count == 1, "Add New Post opened.");
 

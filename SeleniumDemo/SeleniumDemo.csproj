@@ -66,6 +66,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Framework\CoreMethods.cs" />
+    <Compile Include="Framework\ElementActions.cs" />
     <Compile Include="Pages\AddPostsPage.cs" />
     <Compile Include="Pages\DahboardPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
@@ -74,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\WebDriver.GeckoDriver.0.20.1\content\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SeleniumDemo.Framework;
 
 namespace SeleniumDemo.Pages
 {
@@ -36,28 +37,23 @@ namespace SeleniumDemo.Pages
                 btnCross.Click();
             }
 
-            txtTitle.SendKeys("Blog Post 1");
-            txtTitle.SendKeys(Keys.Tab);
+            txtTitle.EnterText("Blog Post 1");
+            txtTitle.EnterText(Keys.Tab);
 
-            txtPara.SendKeys("This is the first line.\n");
-            txtPara.SendKeys("\nThis is the second line.\n");
-            txtPara.SendKeys("\nThis is the last line.\n");
+            txtPara.EnterText("This is the first line.");
+            txtPara.EnterText("This is the second line.");
+            txtPara.EnterText("This is the last line.");
 
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(txtbtnPublish)));
 
-            btnPublish.Click();
-            //btnPublish.SendKeys(Keys.Return);
+            btnPublish.ClickElement();
 
             Thread.Sleep(5000);
             
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(txtbtnPublish)));
 
-            //btnPublish.Click();
-            //Actions action = new Actions(_driver);
-            //action.MoveToElement(btnPublish).Perform();
-
-            btnPublish.SendKeys(Keys.Return);
-
+            btnPublish.ClickElementJS(_driver);
+            btnPublish.ClickElementJS(_driver);            
         }
 
     }
