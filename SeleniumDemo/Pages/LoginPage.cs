@@ -6,15 +6,22 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using SeleniumDemo.Framework;
+using log4net.Core;
+using log4net;
 
 namespace SeleniumDemo.Pages
 {
     public class LoginPage
     {
         private readonly RemoteWebDriver _driver = null;
+        ILog logger = LoggerHelper.GetLogger(typeof(LoginPage));
 
-        public LoginPage(RemoteWebDriver driver) => _driver = driver;
-
+        public LoginPage(RemoteWebDriver driver)
+        {
+            _driver = driver;
+            LoggerHelper.Layout = "%date{ dd-MMM-yyyy-HH:mm: ss}- [%level] - %class - %method -%message%newline";
+        }
+        
         IWebElement txtUserName => _driver.FindElementByXPath("//input[@id='user_login']");
         IWebElement txtPasswd => _driver.FindElementByXPath("//input[@id='user_pass']");
         IWebElement btnLogin => _driver.FindElementByXPath("//input[@value='Log In']");
@@ -31,6 +38,7 @@ namespace SeleniumDemo.Pages
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(eleUserLogin)));
 
+            logger.Info("Login started");
             txtUserName.EnterText(userName);
             txtPasswd.EnterText(userName);
             btnLogin.ClickElement();
@@ -41,11 +49,12 @@ namespace SeleniumDemo.Pages
 
         public void LogOut()
         {
+            logger.Info("Logout started");
             eleUserName.ClickElement();
             eleUserName.MoveToElement(_driver);
 
             lnkLogOut.ClickElement();
-
+            logger.Info("---------Ending Logging-------------");
         }
     }
 }

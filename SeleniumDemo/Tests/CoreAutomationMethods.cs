@@ -1,4 +1,5 @@
 ﻿
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -17,34 +18,25 @@ using System.Text;
 using System.Threading.Tasks;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace SeleniumDemo
+namespace SeleniumDemo.Tests
 {
     [TestClass]
     public class CoreAutomationMethods
     {
 
         RemoteWebDriver driver = null;
-
-        string URL = "https://s1.demo.opensourcecms.com/wordpress/wp-login.php";
+        readonly string URL = "https://s1.demo.opensourcecms.com/wordpress/wp-login.php";
         
         [TestInitialize]
         public void Initialize()
         {
 
-            //CoreMethods coreMethods = new CoreMethods();
-            //coreMethods.KillProcess("chromedriver");
-            //coreMethods.KillProcess("conhost");
-
             //var chromeOptions = new ChromeOptions();
             //chromeOptions.AddArguments("headless");
-
-            var ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            driver = new ChromeDriver(ChromeDriverPath);//, chromeoptions);
             //var FireFoxDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //driver = new FirefoxDriver(FireFoxDriverPath);
-            driver.Url = URL;
 
-            driver.Manage().Window.Maximize();
+            driver = BaseClass.Setup("Chrome", URL);
 
             LoginPage loginPage = new LoginPage(driver);
             loginPage.Login();

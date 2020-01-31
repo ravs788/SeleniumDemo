@@ -10,15 +10,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SeleniumDemo.Framework;
+using log4net;
 
 namespace SeleniumDemo.Pages
 {
     public class AddPostsPage
     {
         private readonly RemoteWebDriver _driver;
+        private static ILog logger = LoggerHelper.GetLogger(typeof(AddPostsPage));
+        
+        
         public AddPostsPage(RemoteWebDriver driver)
         {
             _driver = driver;
+            LoggerHelper.Layout = "%date{ dd-MMM-yyyy-HH:mm: ss}- [%level] - %class - %method -%message%newline";
         }
 
         IList<IWebElement> pnlTip => _driver.FindElements(By.XPath("//div[@class='components-popover__content']"));
@@ -37,6 +42,7 @@ namespace SeleniumDemo.Pages
                 btnCross.Click();
             }
 
+            logger.Info("Entering Post Details");
             txtTitle.EnterText("Blog Post 1");
             txtTitle.EnterText(Keys.Tab);
 
