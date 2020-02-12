@@ -1,14 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using SeleniumDemo.Framework;
 using log4net;
 
@@ -31,7 +27,8 @@ namespace SeleniumDemo.Pages
         IWebElement txtTitle => _driver.FindElementByXPath("//div[@class='editor-writing-flow block-editor-writing-flow']//div[@class='editor-post-title']//textarea[@placeholder='Add title']");
         IWebElement txtPara => _driver.FindElementByXPath("//div[@class='editor-writing-flow block-editor-writing-flow']//div[@class='editor-block-list__block-edit block-editor-block-list__block-edit']//div/p[@role='textbox']");
         IWebElement btnPublish => _driver.FindElementByXPath("//div[@class='edit-post-header']/div[@class='edit-post-header__settings']/button[contains(text(),'Publish')]");
-        string txtbtnPublish = "//div[@class='edit-post-header']/div[@class='edit-post-header__settings']/button[contains(text(),'Publish')]";
+
+        readonly string txtbtnPublish = "//div[@class='edit-post-header']/div[@class='edit-post-header__settings']/button[contains(text(),'Publish')]";
 
         public void fillPostDetails()
         {

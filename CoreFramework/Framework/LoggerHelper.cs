@@ -1,17 +1,13 @@
 ﻿using log4net.Appender;
 using log4net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using log4net.Layout;
 using log4net.Core;
 using log4net.Config;
 
 namespace SeleniumDemo.Framework
 {
-    public class LoggerHelper
+    public static class LoggerHelper
     {
         #region Fields
         private static RollingFileAppender _rollingFileAppender;

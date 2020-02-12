@@ -55,6 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
@@ -70,10 +71,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Pages\AddPostsPage.cs" />
-    <Compile Include="Pages\DashboardPage.cs" />
-    <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Tests\CoreAutomationMethods.cs" />
+    <Compile Include="Pages\HerokuAppPages\CheckboxesPage.cs" />
+    <Compile Include="Pages\HerokuAppPages\BasicAuthPage.cs" />
+    <Compile Include="Pages\HerokuAppPages\HomePage.cs" />
+    <Compile Include="Pages\OpenSourceCMSPages\AddPostsPage.cs" />
+    <Compile Include="Pages\OpenSourceCMSPages\DashboardPage.cs" />
+    <Compile Include="Pages\OpenSourceCMSPages\LoginPage.cs" />
+    <Compile Include="Tests\HerokuAppTestCases.cs" />
+    <Compile Include="Tests\OpenSourceCMSTestCases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +96,15 @@
       <Project>{17f689fc-56c0-4a80-9a96-16abc582fe6f}</Project>
       <Name>CoreFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

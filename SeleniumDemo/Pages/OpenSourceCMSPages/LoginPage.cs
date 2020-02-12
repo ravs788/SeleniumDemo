@@ -1,12 +1,9 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using SeleniumDemo.Framework;
-using log4net.Core;
 using log4net;
 
 namespace SeleniumDemo.Pages
@@ -14,7 +11,7 @@ namespace SeleniumDemo.Pages
     public class LoginPage
     {
         private readonly RemoteWebDriver _driver = null;
-        ILog logger = LoggerHelper.GetLogger(typeof(LoginPage));
+        readonly ILog logger = LoggerHelper.GetLogger(typeof(LoginPage));
 
         public LoginPage(RemoteWebDriver driver)
         {
@@ -28,7 +25,7 @@ namespace SeleniumDemo.Pages
         IWebElement eleUserName => _driver.FindElementByXPath("//ul[@class='ab-top-secondary ab-top-menu']/li/a");
         IWebElement lnkLogOut => _driver.FindElementByXPath("//ul[@class='ab-submenu']/li[@id='wp-admin-bar-logout']/a[text()='Log Out']");
 
-        string eleUserLogin = "//input[@id='user_login']";
+        readonly string eleUserLogin = "//input[@id='user_login']";
         string eleUserVerify = "//ul[@class='ab-top-secondary ab-top-menu']/li//span[text()='sUserName']";
 
         public void Login()
@@ -55,6 +52,10 @@ namespace SeleniumDemo.Pages
 
             lnkLogOut.ClickElement();
             logger.Info("---------Ending Logging-------------");
+
+            CoreMethods coreMethods = new CoreMethods();
+            coreMethods.KillProcess("chromedriver");
+            coreMethods.KillProcess("conhost");
         }
     }
 }
