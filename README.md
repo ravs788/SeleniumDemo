@@ -5,3 +5,4 @@ Created a Selenium C# framework solution from scratch
 3) Moved Framework Layer to separate project.
   a) Added Basic Logging Capabilities.
   b) Added a Base Class to handle setup.
+4) Added Tests for another page and refactored the solution
